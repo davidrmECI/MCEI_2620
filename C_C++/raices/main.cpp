@@ -27,13 +27,13 @@ int main() {
   double r;
 
   do {
-	iter++;
-	status = gsl_root_fsolver_iterate(s);
-	r = gsl_root_fsolver_root(s);
-	x_lo = gsl_root_fsolver_x_lower(s);
-	x_hi = gsl_root_fsolver_x_upper(s);
-	std::cout << iter << "\t" << x_lo << "\t" << x_hi << "\t" << r << "\n"; 
-        status = gsl_root_test_interval( x_lo, x_hi, 0.0, 1e-8);
+    iter++;
+    status = gsl_root_fsolver_iterate(s);
+    r = gsl_root_fsolver_root(s);
+    x_lo = gsl_root_fsolver_x_lower(s);
+    x_hi = gsl_root_fsolver_x_upper(s);
+    std::cout << iter << "\t" << x_lo << "\t" << x_hi << "\t" << r << "\n"; 
+          status = gsl_root_test_interval( x_lo, x_hi, 0.0, 1e-8);
   } while(status == GSL_CONTINUE && iter < max_iter);
 
   std::cout << "\nRaiz encontrada = " << r << std::endl; gsl_root_fsolver_free(s);
